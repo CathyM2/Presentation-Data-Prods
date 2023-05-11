@@ -1,0 +1,47 @@
+---
+title: "Prediction of diamond prices"
+author: "Cathy M"
+date: "2023-05-11"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(caret)
+```
+
+## Purpose
+
+This app will allow users to predict the price of a diamond by inputting the carat, cut and colour of the diamond.
+
+## How to pick options
+
+The colour and cut have both got drop down boxes to allow the user to choose their options.
+
+To input the carats the user can use the numeric input box to input between 0.2 and 5.1, these options have been chosen as the original data set used to build the model has no values above 5.1 or below 0.2 so to maintain accuracy these limits have been applied.
+
+## How is the prediction made?
+
+The prediction was created using the diamond data set, a glm model was used to predict price using the cut, carat and colour variables. The code is found below:
+
+```{r making model, echo = TRUE}
+model <- train(price~as.numeric(carat)+as.factor(cut)+as.factor(color), diamonds, method ='glm')
+```
+
+## Example Output
+
+The following will run the modelling code for an example input, the intput is listed below along with the code.
+
+Input:
+
+-   Colour = G
+
+-   Carats = 1.5
+
+-   Cut = Premium
+
+```{r Using Model}
+predict(model,newdata = data.frame(carat=as.factor(1.5),
+                                                   color=as.factor('G'),cut=as.factor('Premium')))
+
+```

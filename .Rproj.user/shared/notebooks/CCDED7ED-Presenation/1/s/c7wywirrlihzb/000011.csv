@@ -1,0 +1,8 @@
+"0","predict(model,newdata = data.frame(carat=as.factor(1.5),"
+"0","                                                   color=as.factor('G'),cut=as.factor('Premium')))"
+"1","       1 "
+"1","
+"
+"1","5762.804 "
+"1","
+"
